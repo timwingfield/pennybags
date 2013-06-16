@@ -1,4 +1,9 @@
 Pennybags::Application.routes.draw do
+
+  match '/' => 'home#index'
+
+  resources :properties
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

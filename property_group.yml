@@ -1,0 +1,29 @@
+purple:
+  order: 0
+
+light_blue:
+  order: 1
+
+pink:
+  order: 2
+
+orange:
+  order: 3
+
+red: 
+  order: 4
+
+yellow: 
+  order: 5
+
+green:
+  order: 6
+
+dark_blue:
+  order: 7
+
+railroads:
+  order: 8
+
+utilities:
+  order: 9
