@@ -6,7 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-owners = Owner.create([{name: 'Bank'}, {name: 'Thimble'}, {name: 'Battleship'}, {name: 'Car'}, {name: 'Top Hat'}])
+Owner.create([{name: 'Bank', slug: 'bank'}, {name: 'Thimble', slug: 'thimble'}, {name: 'Battleship', slug: 'battleship'}, {name: 'Car', slug: 'car'}, {name: 'Top Hat', slug: 'tophat'}])
+
+owners = Owner.all
 
 Property.create(name: 'Reading Railroad', owner: owners.first, is_mortgaged: false, number_of_houses: 0, has_hotel: false, property_group: 'railroads')
 Property.create(name: 'Oriental Ave', owner: owners.first, is_mortgaged: false, number_of_houses: 0, has_hotel: false, property_group: 'light_blue')

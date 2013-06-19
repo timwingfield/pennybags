@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
+  gem 'awesome_print'
   gem 'rspec-rails', '~> 2.0'
 end
 
