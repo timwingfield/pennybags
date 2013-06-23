@@ -5,11 +5,35 @@ body {
 
 /* Custom container */
 .container-narrow {
+  max-width: 700px;
+}
+
+.logo {
   margin: 0 auto;
-  max-width: 7
   height: 50px;
   width: 50px;
   margin-right: 12px;
   display: inline;
   float: left;
+}
+
+/* property card - 240h x 215w */
+.property-title {
+  width: 180px
+}
+
+.red {
+  background-color: #d60006
+}
+
+.yellow{
+  background-color: #edd02d
+}
+
+.green {
+  background-color: #1b7d21
+}
+
+.dark-blue {
+  background-color: #183a5f
 }
