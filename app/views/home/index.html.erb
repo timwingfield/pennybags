@@ -13,55 +13,22 @@
 
 <hr>
 
-<div class="row">
-  <div class="small-card span2">   
-    <div class="small-property-card dark_blue"></div>
-    <h4>Boardwalk</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card green"></div>
-    <h4>North Carolina Ave</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card yellow"></div>
-    <h4>Marvin Gardens</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card orange"></div>
-    <h4>St James Ave</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card pink"></div>
-    <h4>St Charles Place</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card light_blue"></div>
-    <h4>Oriental Ave</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card railroads"></div>
-    <h4>Reading RR</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card red"></div>
-    <h4>Illinois Ave</h4>
-  </div>
-
-  <div class="small-card span2">   
-    <div class="small-property-card utilities"></div>
-    <h4>Electric Company</h4>
-  </div>
+<div class="row property-list">
 </div>
 
 <script type="text/javascript">
   $(function(){
     $('.test').text("Adding some text");    
+
+    $.get('/properties', function(data) { 
+      $.each(data, function(){
+        html = '<div class="small-card span2">';
+        html += '<div class="small-property-card ' + this.property_group + '"></div>';
+        html += '<h4>' + this.name + '</h4>';
+        html += '</div>'
+        $('.property-list').append(html);
+      });
+    }); 
+
   });
 </script>
