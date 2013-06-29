@@ -2,11 +2,11 @@
   <p class="lead">View Properties owned by the Bank</p>
   <div class="row">
     <div class="span4 property-details">
-      <div class="property-title well dark_blue"></div>
-      <h3>Boardwalk</h3>
-      <p><strong>Owner:</strong> Bank</p>
-      <p><strong>Rent:</strong> $400</p>
-      <p><strong>Mortgage Value:</strong> $400</p>
+      <div class="property-title well"></div>
+      <h3>Select a Property</h3>
+      <p><strong>Owner:</strong> </p>
+      <p><strong>Rent:</strong> $000</p>
+      <p><strong>Mortgage Value:</strong> $000</p>
     </div>
   </div>
 </div>
@@ -25,6 +25,7 @@
       html += '<div class="small-property-card ' + property.property_group + '"></div>';
       html += '<h4>' + property.name + '</h4>';
       html += '</div>'
+
       $('.property-list').append(html);
     });
   };
@@ -35,9 +36,9 @@
     html = '<div class="property-title well '+ selectedProperty.property_group + '"></div>';
     html += '<h3>' + selectedProperty.name + '</h3>';
     html += '<p><strong>Owner:</strong> ' + selectedProperty.owner.name + '</p>';
-    html += '<p><strong>Rent:</strong> $400</p>';
-    html += '<p><strong>Mortgage Value:</strong> $400</p>';
-    console.log(selectedProperty);
+    html += '<p><strong>Rent:</strong> $' + selectedProperty.rent + '</p>';
+    html += '<p><strong>Mortgage Value:</strong> $' + selectedProperty.mortgage_value + '</p>';
+
     $('.property-details').html(html);
   };
 
