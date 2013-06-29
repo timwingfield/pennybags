@@ -13,22 +13,37 @@
 
 <hr>
 
-<div class="row property-list">
-</div>
+<div class="row property-list"></div>
 
 <script type="text/javascript">
+  var loadThumbnails, propertyDetails, properties, html;
+
+  loadThumbnails = function(data){
+    properties = data;
+    _.each(data, function(property){
+      html = '<div class="small-card span2" data-id="' + property.id + '">';
+      html += '<div class="small-property-card ' + property.property_group + '"></div>';
+      html += '<h4>' + property.name + '</h4>';
+      html += '</div>'
+      $('.property-list').append(html);
+    });
+  };
+
+  propertyDetails = function(id){
+    selectedProperty = _.find(properties, function(property){ return property.id === id });
+
+    html = '<div class="property-title well '+ selectedProperty.property_group + '"></div>';
+    html += '<h3>' + selectedProperty.name + '</h3>';
+    html += '<p><strong>Owner:</strong> ' + selectedProperty.owner.name + '</p>';
+    html += '<p><strong>Rent:</strong> $400</p>';
+    html += '<p><strong>Mortgage Value:</strong> $400</p>';
+    console.log(selectedProperty);
+    $('.property-details').html(html);
+  };
+
+  $(".property-list").on('click', 'div.small-card', function(){ propertyDetails($(this).data('id')) });
+
   $(function(){
-    $('.test').text("Adding some text");    
-
-    $.get('/properties', function(data) { 
-      $.each(data, function(){
-        html = '<div class="small-card span2">';
-        html += '<div class="small-property-card ' + this.property_group + '"></div>';
-        html += '<h4>' + this.name + '</h4>';
-        html += '</div>'
-        $('.property-list').append(html);
-      });
-    }); 
-
+    $.get('/properties', loadThumbnails); 
   });
 </script>
