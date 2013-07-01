@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require_tree .
+//= require backbone
+//= require_directory .
