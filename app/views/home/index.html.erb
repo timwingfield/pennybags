@@ -25,10 +25,10 @@
 
 <script type="text/template" id="property-details">
   <div class="property-title well {{= property_group }}"></div>
-  <h3>{{= selectedProperty.name }}</h3>
+  <h3>{{= name }}</h3>
   <p><strong>Owner:</strong>{{= owner.name }}</p>
   <p><strong>Rent:</strong> ${{= rent }}</p>
-  <p><strong>Mortgage Value:</strong> ${{= selectedProperty.mortgage_value }}</p>
+  <p><strong>Mortgage Value:</strong> ${{= mortgage_value }}</p>
 </script>
 
 <script src="/assets/property/property_manager.js" type="text/javascript"></script>
@@ -60,10 +60,10 @@
     $('.property-details').html(html);
   };
 
-  $(".property-list").on('click', 'div.small-card', function(){ propertyDetails($(this).data('id')) });
+  //$(".property-list").on('click', 'div.small-card', function(){ propertyDetails($(this).data('id')) });
 
   $(function(){
-    $.get('/properties', loadThumbnails); 
+    //$.get('/properties', loadThumbnails); 
 
     //var App = new SmallCardView({el: $(".property-list")});
     //App.render();

@@ -13,35 +13,58 @@ var Properties = Backbone.Collection.extend({
 var PropertiesView = Backbone.View.extend({
 
   initialize: function(){
-    _.bindAll(this, 'render');
+    self = this;
     this.collection = new Properties();
     this.collection.on('reset', this.render, this);
 
-    this.collection.fetch({reset: true}).done(function(){
-      console.log(this);
-    });
-    console.log('init');
+    Backbone.on('propertyDetails:load', this.loadPropertyDetails);
+
+    this.collection.fetch({reset: true});
+
+    this.propertyDetails = new PropertyDetailsView({el: '.property-details'});
   },
 
   render: function(){
-    console.log('rendering...');
     this.collection.each(function(m){
-      $(this.el).append('<p>' + m.get('name') + '</p>');        
+      v = new SmallCardView({model: m});
+      $(self.el).append(v.render().el);
     });
+    
+    return this;
+  },
+
+  loadPropertyDetails: function(property) {
+    // alert(property.get('name'));
+    console.log(self.propertyDetails);
+    self.propertyDetails.model = property;
+    self.propertyDetails.render();
   }
 });
 
 var SmallCardView = Backbone.View.extend({
   template: _.template($("#small-card").html()),
 
+  events: {
+    'click' : 'loadPropertyDetails'
+  },
+
   render: function(){
-    p = new Backbone.Model({id: 1, name: "something", property_group: "dark_blue"});
-    html = this.template(p.toJSON());
-    console.log(html);
+    html = this.template(this.model.toJSON());
     $(this.el).append(html); 
+    return this;
+  },
+
+  loadPropertyDetails: function(){
+    Backbone.trigger('propertyDetails:load', this.model);
   }
 });
 
 var PropertyDetailsView = Backbone.View.extend({
   template: _.template($("#property-details").html()),
+
+  render: function(){
+    html = this.template(this.model.toJSON());
+    $(this.el).html(html); 
+    return this;
+  }
 });
