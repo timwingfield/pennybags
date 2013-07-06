@@ -15,13 +15,12 @@ var PropertiesView = Backbone.View.extend({
   initialize: function(){
     self = this;
     this.collection = new Properties();
-    this.collection.on('reset', this.render, this);
+    this.propertyDetails = new PropertyDetailsView({el: '.property-details'});
 
+    this.collection.on('reset', this.render, this);
     Backbone.on('propertyDetails:load', this.loadPropertyDetails);
 
     this.collection.fetch({reset: true});
-
-    this.propertyDetails = new PropertyDetailsView({el: '.property-details'});
   },
 
   render: function(){
@@ -34,8 +33,6 @@ var PropertiesView = Backbone.View.extend({
   },
 
   loadPropertyDetails: function(property) {
-    // alert(property.get('name'));
-    console.log(self.propertyDetails);
     self.propertyDetails.model = property;
     self.propertyDetails.render();
   }
@@ -64,7 +61,23 @@ var PropertyDetailsView = Backbone.View.extend({
 
   render: function(){
     html = this.template(this.model.toJSON());
-    $(this.el).html(html); 
+    this.$el.html(html); 
+
+
+
+    transfer = new PropertyTransferView({el: '.property-transfer'});
+    transfer.render();
+
+    return this;
+  }
+});
+
+var PropertyTransferView = Backbone.View.extend({
+  template: _.template($("#property-transfer").html()),
+
+  render: function() {
+    html = this.template();
+    $(this.el).html(html);
     return this;
   }
 });

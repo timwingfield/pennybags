@@ -8,13 +8,13 @@
       <p><strong>Rent:</strong> $000</p>
       <p><strong>Mortgage Value:</strong> $000</p>
     </div>
+    <div class="span4 property-transfer"></div>
   </div>
 </div>
 
 <hr>
 
 <div class="row property-list"></div>
-
 
 <script type="text/html" id="small-card">
   <div class="small-card span2" data-id="{{= id }}">
@@ -26,48 +26,21 @@
 <script type="text/template" id="property-details">
   <div class="property-title well {{= property_group }}"></div>
   <h3>{{= name }}</h3>
-  <p><strong>Owner:</strong>{{= owner.name }}</p>
+  <p><strong>Owner:</strong> {{= owner.name }}</p>
   <p><strong>Rent:</strong> ${{= rent }}</p>
   <p><strong>Mortgage Value:</strong> ${{= mortgage_value }}</p>
+</script>
+
+<script type="text/template" id="property-transfer">
+  <ul class="players"></ul>
+  <button class="btn btn-success"><i class="icon-ok icon-white"></i> Sell</button>
+  <button class="btn btn-danger"><i class="icon-remove icon-white"></i> Cancel</button>
 </script>
 
 <script src="/assets/property/property_manager.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-  var loadThumbnails, propertyDetails, properties, html;
-
-  loadThumbnails = function(data){
-    properties = data;
-    _.each(data, function(property){
-      html = '<div class="small-card span2" data-id="' + property.id + '">';
-      html += '<div class="small-property-card ' + property.property_group + '"></div>';
-      html += '<h4>' + property.name + '</h4>';
-      html += '</div>'
-
-      $('.property-list').append(html);
-    });
-  };
-
-  propertyDetails = function(id){
-    selectedProperty = _.find(properties, function(property){ return property.id === id });
-
-    html = '<div class="property-title well '+ selectedProperty.property_group + '"></div>';
-    html += '<h3>' + selectedProperty.name + '</h3>';
-    html += '<p><strong>Owner:</strong> ' + selectedProperty.owner.name + '</p>';
-    html += '<p><strong>Rent:</strong> $' + selectedProperty.rent + '</p>';
-    html += '<p><strong>Mortgage Value:</strong> $' + selectedProperty.mortgage_value + '</p>';
-
-    $('.property-details').html(html);
-  };
-
-  //$(".property-list").on('click', 'div.small-card', function(){ propertyDetails($(this).data('id')) });
-
   $(function(){
-    //$.get('/properties', loadThumbnails); 
-
-    //var App = new SmallCardView({el: $(".property-list")});
-    //App.render();
-
     new PropertiesView({el: ".property-list"});
   });
 </script>
