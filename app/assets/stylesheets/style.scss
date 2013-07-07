@@ -17,6 +17,19 @@ body {
   float: left;
 }
 
+.players {
+  list-style-type: none;
+
+  li {
+    img {
+      height: 50px;
+      width: 50px;
+      margin-left: 12px;
+    }
+  }
+  
+}
+
 /* property card - 240h x 215w */
 .small-card {
   margin-bottom: 10px;
