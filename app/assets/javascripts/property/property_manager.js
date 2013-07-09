@@ -19,7 +19,7 @@ var Properties = Backbone.Collection.extend({
 var PropertiesView = Backbone.View.extend({
 
   initialize: function(){
-    self = this;
+    _.bindAll(this, "loadPropertyDetails", "render");
     this.collection = new Properties();
 
     this.collection.on('reset', this.render, this);
@@ -29,11 +29,10 @@ var PropertiesView = Backbone.View.extend({
   },
 
   render: function(){
-    var me = this;
     this.collection.each(function(m){
       v = new SmallCardView({model: m});
-      $(me.el).append(v.render().el);
-    });
+      $(this.el).append(v.render().el);
+    }, this);
     
     return this;
   },
@@ -43,17 +42,17 @@ var PropertiesView = Backbone.View.extend({
     $propertyDetails = $('.property-details');
     $propertyTransfer = $('.property-transfer');
 
-    self.propertyDetails = self.propertyDetails || new PropertyDetailsView();
-    self.propertyDetails.model = property;
+    this.propertyDetails = this.propertyDetails || new PropertyDetailsView();
+    this.propertyDetails.model = property;
 
-    $propertyDetails.html(self.propertyDetails.render().el);
+    $propertyDetails.html(this.propertyDetails.render().el);
 
     $propertyTransfer.html('');
 
     if(property.get('owner_id') === 1){
-      self.propertyTransfer = self.propertyTransfer || new PropertyTransferView();
-      self.propertyTransfer.model = property;
-      $propertyTransfer.html(self.propertyTransfer.render().el);
+      this.propertyTransfer = this.propertyTransfer || new PropertyTransferView();
+      this.propertyTransfer.model = property;
+      $propertyTransfer.html(this.propertyTransfer.render().el);
     }
   }
 });
