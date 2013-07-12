@@ -13,6 +13,7 @@ var Properties = Backbone.Collection.extend({
 var PropertiesView = Backbone.View.extend({
 
   initialize: function(){
+    _.bindAll(this, "render");
     this.collection = new Properties();
 
     this.collection.on('reset', this.render, this);
@@ -21,7 +22,11 @@ var PropertiesView = Backbone.View.extend({
   },
 
   render: function(){
-    // loop over collection
+    this.collection.each(function(m){
+      v = new SmallCardView({model: m});
+      $(this.el).append(v.render().el);
+    }, this);
+
     return this;
   }
 });
