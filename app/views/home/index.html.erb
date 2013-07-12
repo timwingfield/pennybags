@@ -31,21 +31,5 @@
   <p><strong>Mortgage Value:</strong> ${{= mortgage_value }}</p>
 </script>
 
-<script type="text/template" id="property-transfer">
-  <ul class="players">
-    <li><button type="button" class="btn btn-primary player" data-player-id="2">Sell to...</button><img src="assets/battleship.png"></li>
-    <li><button type="button" class="btn btn-primary player" data-player-id="3">Sell to...</button><img src="assets/car.png"></li>
-    <li><button type="button" class="btn btn-primary player" data-player-id="4">Sell to...</button><img src="assets/thimble.png"></li>
-    <li><button type="button" class="btn btn-primary player" data-player-id="5">Sell to...</button><img src="assets/tophat.png"></li>
-  </ul>
-  <div class="span4">
-    <button class="btn btn-success save"><i class="icon-ok icon-white"></i> Sell</button>
-    <button class="btn btn-danger cancel"><i class="icon-remove icon-white"></i> Cancel</button>
-  </div>
-</script>
-
 <script src="/assets/property/property_manager.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-  new PropertiesView({el: ".property-list"});
-</script>
