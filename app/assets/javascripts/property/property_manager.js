@@ -25,3 +25,13 @@ var PropertiesView = Backbone.View.extend({
     return this;
   }
 });
+
+var SmallCardView = Backbone.View.extend({
+  template: _.template($("#small-card").html()),
+
+  render: function(){
+    html = this.template(this.model.toJSON());
+    $(this.el).append(html); 
+    return this;
+  }
+});
