@@ -2,33 +2,37 @@
   <p class="lead">View Properties owned by the Bank</p>
   <div class="row">
     <div class="span4 property-details">
-      <div class="property-title well dark_blue"></div>
-      <h3>Boardwalk</h3>
-      <p><strong>Owner:</strong> Bank</p>
-      <p><strong>Rent:</strong> $400</p>
-      <p><strong>Mortgage Value:</strong> $400</p>
+      <div class="property-title well"></div>
+      <h3>Select a Property</h3>
+      <p><strong>Owner:</strong> </p>
+      <p><strong>Rent:</strong> $000</p>
+      <p><strong>Mortgage Value:</strong> $000</p>
     </div>
+    <div class="span4 property-transfer"></div>
   </div>
 </div>
 
 <hr>
 
-<div class="row property-list">
-</div>
+<div class="row property-list"></div>
+
+<script type="text/html" id="small-card">
+  <div class="small-card span2" data-id="{{= id }}">
+    <div class="small-property-card {{= property_group }}"></div>
+    <h4>{{= name }}</h4>
+  </div>
+</script>
+
+<script type="text/template" id="property-details">
+  <div class="property-title well {{= property_group }}"></div>
+  <h3>{{= name }}</h3>
+  <p><strong>Owner:</strong> {{= owner.name }}</p>
+  <p><strong>Rent:</strong> ${{= rent }}</p>
+  <p><strong>Mortgage Value:</strong> ${{= mortgage_value }}</p>
+</script>
+
+<script src="/assets/property/property_manager.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-  $(function(){
-    $('.test').text("Adding some text");    
-
-    $.get('/properties', function(data) { 
-      $.each(data, function(){
-        html = '<div class="small-card span2">';
-        html += '<div class="small-property-card ' + this.property_group + '"></div>';
-        html += '<h4>' + this.name + '</h4>';
-        html += '</div>'
-        $('.property-list').append(html);
-      });
-    }); 
-
-  });
+  new PropertiesView({el: ".property-list"});
 </script>
