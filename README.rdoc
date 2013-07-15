@@ -6,6 +6,7 @@ This is the Pennybags demo for the "Backbone.js for Reals" talk I gave at Codest
 == Branch descriptions
 
 1. `master` - Master is the final state of the demo from the session. It's equivalent to the `refactor-step4` branch.
+2. `refactor-demo` - The starting point of the backbone refactoring demo.
 2. `refactor-step[x]` - These are the "live coding" branches from the demo. They walk through adding the various steps to index.html.erb and property_manager.js.
 3. `jquery` - This is the jQuery version of the app that we replaced in the session
 4. `add-new-feature-demo` - Is the rough version of what would become the "Transfer Property" feature. It displays, but does not have the events wired up nor will it save back to the server. (Good "Do It Yourself" opportunity. :) )
